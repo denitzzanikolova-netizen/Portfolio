@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Denitsa Nikolova — Lead UI & UX Designer</title>
+<title>Denitsa Nikolova — Expert UI & UX Designer</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -228,6 +228,7 @@ nav {
 .bg-fitgen  { background: linear-gradient(145deg, #001a0e 0%, #0a5c2e 50%, #00e676 100%); }
 .bg-adveque { background: linear-gradient(145deg, #05050f 0%, #0d1b4b 50%, #1565ff 100%); }
 .bg-cloudee { background: linear-gradient(145deg, #001518 0%, #005c6a 50%, #00e5ff 100%); }
+
 .proj-deco {
   position: absolute; inset: 0; pointer-events: none;
   opacity: 0.1; overflow: hidden;
@@ -424,6 +425,64 @@ footer {
   .proj-desc { max-height: 60px; opacity: 1; }
   footer { padding: 1.5rem 1.25rem; }
 }
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  width: min(600px, 90%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.modal.active .modal-content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-inner h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-inner p {
+  color: var(--muted2);
+  line-height: 1.7;
+}
 </style>
 </head>
 <body>
@@ -533,7 +592,10 @@ footer {
     <h2 class="sec-title">Selected work</h2>
   </div>
   <div class="projects-bento reveal">
-    <div class="proj-card">
+    <<div class="proj-card"
+     data-name="Candy Crush Soda Saga"
+     data-type="Mobile Game · King"
+     data-desc="Built rewarding progression systems, Teams, Collaborations and Limited Events — targeting casual gamers aged 25–45.">
       <div class="proj-bg bg-candy"></div>
       <div class="proj-deco"><svg viewBox="0 0 400 320" preserveAspectRatio="none"><circle cx="320" cy="60" r="120" fill="white"/><circle cx="80" cy="260" r="80" fill="white"/></svg></div>
       <div class="proj-overlay"></div>
@@ -548,7 +610,10 @@ footer {
         </div>
       </div>
     </div>
-    <div class="proj-card">
+    <div class="proj-card"
+     data-name="Yahtzee With Buddies"
+     data-type="Mobile Game · Scopely"
+     data-desc="Full game UI + web portal. Lead & Principal Designer across 2+ years.">
       <div class="proj-bg bg-yahtzee"></div>
       <div class="proj-deco"><svg viewBox="0 0 200 320" preserveAspectRatio="none"><rect x="20" y="20" width="80" height="80" rx="12" fill="white"/><rect x="120" y="120" width="60" height="60" rx="8" fill="white"/><rect x="40" y="200" width="100" height="100" rx="16" fill="white"/></svg></div>
       <div class="proj-overlay"></div>
@@ -563,7 +628,10 @@ footer {
         </div>
       </div>
     </div>
-    <div class="proj-card">
+    <div class="proj-card"
+     data-name="Fitgen"
+     data-type="Fitness App"
+     data-desc="Workout plans, meal guides, calorie tracker — solo workouts into a shared community journey.">
       <div class="proj-bg bg-fitgen"></div>
       <div class="proj-deco"><svg viewBox="0 0 200 260" preserveAspectRatio="none"><ellipse cx="100" cy="80" rx="90" ry="70" fill="white"/><ellipse cx="60" cy="200" rx="50" ry="50" fill="white"/></svg></div>
       <div class="proj-overlay"></div>
@@ -574,7 +642,10 @@ footer {
         <p class="proj-desc">Workout plans, meal guides, calorie tracker — solo workouts into a shared community journey.</p>
       </div>
     </div>
-    <div class="proj-card">
+    <div class="proj-card"
+     data-name="Adveque"
+     data-type="Travel App"
+     data-desc="Group trips to off-the-beaten-path destinations for adventurous 18–35 year olds.">
       <div class="proj-bg bg-adveque"></div>
       <div class="proj-deco"><svg viewBox="0 0 200 260" preserveAspectRatio="none"><polygon points="100,20 180,200 20,200" fill="white"/><polygon points="100,140 160,260 40,260" fill="white" opacity="0.5"/></svg></div>
       <div class="proj-overlay"></div>
@@ -585,7 +656,10 @@ footer {
         <p class="proj-desc">Group trips to off-the-beaten-path destinations for adventurous 18–35 year olds.</p>
       </div>
     </div>
-    <div class="proj-card">
+    <div class="proj-card"
+     data-name="Cloudee"
+     data-type="SaaS Platform"
+     data-desc="Cloud platform for team collaboration. Create, Inspect, Apply.">
       <div class="proj-bg bg-cloudee"></div>
       <div class="proj-deco"><svg viewBox="0 0 200 260" preserveAspectRatio="none"><rect x="10" y="60" width="180" height="4" fill="white"/><rect x="10" y="120" width="140" height="4" fill="white"/><rect x="10" y="180" width="160" height="4" fill="white"/></svg></div>
       <div class="proj-overlay"></div>
@@ -804,5 +878,19 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
+<div id="project-modal" class="modal">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+
+    <div class="modal-inner">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
